@@ -4,7 +4,7 @@ describe 'Feature Test: Cart', :type => :feature do
 
     context "logged in" do
       before(:each) do
-        @user = User.first
+        @user = User.create(email: "steve@steve.com", password: "password", password_confirmation: "password")
         @user.current_cart = @user.carts.create
         @current_cart = @user.current_cart
         @first_item = Item.first
@@ -50,7 +50,6 @@ describe 'Feature Test: Cart', :type => :feature do
      it "sets current_cart to nil on checkout" do
        visit cart_path(@user.current_cart)
        click_button("Checkout")
-
        @user.reload
        expect(@user.current_cart).to be_nil 
      end
@@ -60,7 +59,7 @@ describe 'Feature Test: Cart', :type => :feature do
 
     context "logged in" do
       before(:each) do
-        @user = User.first
+        @user = User.create(email: "steve@steve.com", password: "password", password_confirmation: "password")
         login_as(@user, scope: :user)
       end
 

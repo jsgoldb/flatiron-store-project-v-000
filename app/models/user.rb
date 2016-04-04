@@ -6,7 +6,13 @@ class User < ActiveRecord::Base
 
   has_many :carts
   
-  attr_accessor :current_cart
+  def current_cart=(cart)
+    @cart = cart
+  end
+
+  def current_cart
+    @cart
+  end
 
 
 end

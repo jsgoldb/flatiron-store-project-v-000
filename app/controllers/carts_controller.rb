@@ -28,6 +28,7 @@ class CartsController < ApplicationController
       line_item.item.save
     end
     @user.current_cart = nil
+    @user.save
     redirect_to cart_path(@cart)
   end
 
